@@ -1,0 +1,9 @@
+.videos {
+    padding: 0 15px;
+}
+
+.paginator {
+    padding: 10px 0;
+    width: fit-content;
+    margin: 0 auto;
+}

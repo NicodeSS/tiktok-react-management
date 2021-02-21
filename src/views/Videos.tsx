@@ -1,13 +1,9 @@
 import React from "react";
 import {
     Button,
-    Card,
-    CardHeader,
+    Card, CardHeader,
     Container,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogTitle,
+    Dialog, DialogActions, DialogContent, DialogTitle,
     Grid,
     IconButton,
     Snackbar,
@@ -54,7 +50,7 @@ class Videos extends React.Component<Props, States> {
             createInfo: {
                 author: "6030cf6eeaad770b47afb528",
                 description: "Test Video",
-                tagList: ["TestTag1","TestTag2"],
+                tagList: ["TestTag1", "TestTag2"],
                 song: "Tester - Test Song",
                 imgUrl: "http://182.61.20.79:3000/res/video06.jpg",
                 videoUrl: "http://182.61.20.79:3000/res/video06.mp4",
@@ -119,19 +115,19 @@ class Videos extends React.Component<Props, States> {
         this.setState({
             createDialog: false,
             createInfo: {
-                author: "",
-                description: "",
-                tagList: [],
-                song: "",
-                imgUrl: "",
-                videoUrl: "",
+                author: "6030cf6eeaad770b47afb528",
+                description: "Test Video",
+                tagList: ["TestTag1", "TestTag2"],
+                song: "Tester - Test Song",
+                imgUrl: "http://182.61.20.79:3000/res/video06.jpg",
+                videoUrl: "http://182.61.20.79:3000/res/video06.mp4",
             }
         })
     }
 
     async createVideo() {
         try {
-            let info: VideoInfo_Create = Object.assign({},  this.state.createInfo);
+            let info: VideoInfo_Create = Object.assign({}, this.state.createInfo);
             let newTags: Array<string> = []
             for (let i in info.tagList)
                 if (info.tagList[i] && info.tagList[i].length > 0)
@@ -153,15 +149,15 @@ class Videos extends React.Component<Props, States> {
         }
     }
 
-    setSnackbar (status: boolean):void {
-        this.setState({snackbar:status})
+    setSnackbar(status: boolean): void {
+        this.setState({snackbar: status})
     }
 
-    setAlertSeverity (status: AlertSeverity): void {
+    setAlertSeverity(status: AlertSeverity): void {
         this.setState({alertSeverity: status})
     }
 
-    setAlertMessage (message: string): void {
+    setAlertMessage(message: string): void {
         this.setState({alertMessage: message})
     }
 
@@ -204,8 +200,9 @@ class Videos extends React.Component<Props, States> {
                         />
                     </div>
 
-                    <Snackbar open={this.state.snackbar} autoHideDuration={6000} onClose={()=>this.setSnackbar(false)}>
-                        <Alert onClose={()=>this.setSnackbar(false)} severity={this.state.alertSeverity}>
+                    <Snackbar open={this.state.snackbar} autoHideDuration={6000}
+                              onClose={() => this.setSnackbar(false)}>
+                        <Alert onClose={() => this.setSnackbar(false)} severity={this.state.alertSeverity}>
                             {this.state.alertMessage}
                         </Alert>
                     </Snackbar>
@@ -217,7 +214,8 @@ class Videos extends React.Component<Props, States> {
                             <form noValidate autoComplete="off">
                                 <Grid container spacing={2}>
                                     <Grid item xs={6}>
-                                        <TextField name="author" label="作者" variant="filled" value={this.state.createInfo.author}
+                                        <TextField name="author" label="作者" variant="filled"
+                                                   value={this.state.createInfo.author}
                                                    onChange={this.handleFormChange}
                                                    fullWidth
                                         />

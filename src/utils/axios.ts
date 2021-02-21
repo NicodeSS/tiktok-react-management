@@ -22,81 +22,81 @@ http.interceptors.request.use(
 );
 
 let methods = {
-    get: function(url:string, params={}):Promise<any> {
+    get: function (url: string, params = {}): Promise<any> {
         return new Promise((resolve, reject) => {
             http({
                 method: "GET",
                 url: url,
                 params: params
             })
-                .then(function(res) {
+                .then(function (res) {
                     resolve(res)
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                     reject(err)
                 });
         });
     },
-    post: function(url:string, params:object):Promise<any> {
+    post: function (url: string, params: object): Promise<any> {
         return new Promise((resolve, reject) => {
             http({
                 method: "POST",
                 url: url,
                 data: params
             })
-                .then(function(res) {
+                .then(function (res) {
                     resolve(res)
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                     reject(err)
                 });
         });
     },
-    put: function(url:string, params:object):Promise<any> {
+    put: function (url: string, params: object): Promise<any> {
         return new Promise((resolve, reject) => {
             http({
                 method: "PUT",
                 url: url,
                 data: params
             })
-                .then(function(res) {
+                .then(function (res) {
                     resolve(res)
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                     reject(err)
                 });
         });
     },
-    delete: function(url:string, params={}):Promise<any> {
+    delete: function (url: string, params = {}): Promise<any> {
         return new Promise((resolve, reject) => {
             http({
                 method: "DELETE",
                 url: url,
                 params: params
             })
-                .then(function(res) {
+                .then(function (res) {
                     resolve(res)
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                     reject(err)
                 });
         });
     },
-    patch: function(url:string, params:object):Promise<any> {
+    patch: function (url: string, params: object): Promise<any> {
         return new Promise((resolve, reject) => {
             http({
                 method: "PATCH",
                 url: url,
                 data: params
             })
-                .then(function(res) {
+                .then(function (res) {
                     resolve(res)
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                     reject(err)
                 });
         });
     }
 };
 
-export default methods;
+export default methods

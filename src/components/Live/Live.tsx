@@ -153,7 +153,6 @@ export default function Live({
                 />
             </CardActionArea>
 
-
             <CardHeader
                 avatar={
                     <Avatar alt={info.author_nick} src={info.author_avatar}/>
@@ -165,7 +164,7 @@ export default function Live({
 
                 }
                 title={info.author_nick}
-                subheader={"2020-02-20 18:00"}
+                subheader={info.updatedAt}
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">

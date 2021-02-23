@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -15,15 +15,14 @@ import {
     Typography,
     Divider,
     IconButton,
-    Badge,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {mainListItems} from '../listItems';
 import Videos from "./Videos";
 import Lives from "./Lives";
-import { is_login } from "../api/login";
+import {is_login} from "../api/login";
 
 const drawerWidth = 240;
 
@@ -113,19 +112,25 @@ export default function Dashboard() {
         setOpen(true);
     };
 
+    const admin_logout = () => {
+        if (localStorage.getItem("token"))
+            localStorage.removeItem("token")
+        window.location.href = "/";
+    }
+
     useEffect(() => {
-        if(!localStorage.getItem('token')) {
+        if (!localStorage.getItem('token')) {
             window.location.href = "/";
             return;
         }
         try {
             (async function checkLogin() {
                 const response = await is_login();
-                if(!response.data.isLogin) {
+                if (!response.data.isLogin) {
                     window.location.href = "/";
                     return;
                 }
-              })()
+            })()
         } catch {
             console.log('error');
         }
@@ -153,10 +158,8 @@ export default function Dashboard() {
                         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                             Dashboard
                         </Typography>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon/>
-                            </Badge>
+                        <IconButton color="inherit" onClick={() => admin_logout()}>
+                            <ExitToAppIcon/>
                         </IconButton>
                     </Toolbar>
                 </AppBar>

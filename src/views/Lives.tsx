@@ -160,7 +160,7 @@ class Lives extends React.Component<Props, States> {
                         <Grid container spacing={3}>
                             {
                                 this.state.lives.map((live, index) => (
-                                    <Grid item xs={6} lg={3}>
+                                    <Grid key={live._id} item xs={6} lg={3}>
                                         <Live
                                             index={index}
                                             info={live}

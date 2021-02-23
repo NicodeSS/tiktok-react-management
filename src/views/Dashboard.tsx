@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -6,26 +6,23 @@ import {
 } from 'react-router-dom'
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
+import {
+    CssBaseline,
+    Drawer,
+    AppBar,
+    Toolbar,
+    List,
+    Typography,
+    Divider,
+    IconButton,
+} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {mainListItems} from '../listItems';
-import Videos from "../views/Videos"
+import Videos from "./Videos";
 import Lives from "./Lives";
+import {is_login} from "../api/login";
 
 const drawerWidth = 240;
 
@@ -114,10 +111,34 @@ export default function Dashboard() {
     const handleDrawerOpen = () => {
         setOpen(true);
     };
+
+    const admin_logout = () => {
+        if (localStorage.getItem("token"))
+            localStorage.removeItem("token")
+        window.location.href = "/";
+    }
+
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            window.location.href = "/";
+            return;
+        }
+        try {
+            (async function checkLogin() {
+                const response = await is_login();
+                if (!response.data.isLogin) {
+                    window.location.href = "/";
+                    return;
+                }
+            })()
+        } catch {
+            console.log('error');
+        }
+    });
+
     const handleDrawerClose = () => {
         setOpen(false);
     };
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     return (
         <div className={classes.root}>
@@ -137,10 +158,8 @@ export default function Dashboard() {
                         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                             Dashboard
                         </Typography>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon/>
-                            </Badge>
+                        <IconButton color="inherit" onClick={() => admin_logout()}>
+                            <ExitToAppIcon/>
                         </IconButton>
                     </Toolbar>
                 </AppBar>
@@ -163,9 +182,9 @@ export default function Dashboard() {
                     <div className={classes.appBarSpacer}/>
                     <div>
                         <Switch>
-                            <Route path="/videos" component={Videos}/>
-                            <Route path="/lives" component={Lives}/>
-                            <Route path="/" component={Videos}/>
+                            <Route path="/dashboard/videos" component={Videos}/>
+                            <Route path="/dashboard/lives" component={Lives}/>
+                            <Route path="/dashboard/" component={Videos}/>
                         </Switch>
                     </div>
                 </main>

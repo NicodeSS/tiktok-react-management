@@ -10,6 +10,9 @@ let http = axios.create({
 
 http.interceptors.request.use(
     config => {
+        if (localStorage.getItem("token")) {
+            config.headers.Authorization = localStorage.getItem("token");
+        }
         if (config.method === "POST") {
             config.headers["Content-Type"] = "application/json;charset=utf-8";
         }

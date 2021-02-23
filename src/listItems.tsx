@@ -9,7 +9,7 @@ import PeopleIcon from '@material-ui/icons/People';
 
 export const mainListItems = (
     <div>
-        <Link to="/videos">
+        <Link to="/dashboard/videos">
             <ListItem button>
 
                 <ListItemIcon>
@@ -19,7 +19,7 @@ export const mainListItems = (
 
             </ListItem>
         </Link>
-        <Link to="/lives">
+        <Link to="/dashboard/lives">
             <ListItem button>
 
                 <ListItemIcon>

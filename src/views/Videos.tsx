@@ -178,7 +178,7 @@ class Videos extends React.Component<Props, States> {
                         <Grid container spacing={3}>
                             {
                                 this.state.videos.map((video, index) => (
-                                    <Grid item xs={6} lg={3}>
+                                    <Grid key={video._id} item xs={6} lg={3}>
                                         <Video
                                             index={index}
                                             info={video}

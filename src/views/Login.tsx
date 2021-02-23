@@ -20,12 +20,9 @@ import { Alert } from '@material-ui/lab';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
       <Link color="inherit" href="https://github.com/NicodeSS/techtrainingcamp-frontend-2">
-        trainingCamp of frontend_2
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
+        TechCamp Frontend Group 2
+      </Link>{' made with ❤️'}{'.'}
     </Typography>
   );
 }

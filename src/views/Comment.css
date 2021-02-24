@@ -1,0 +1,16 @@
+.table {
+    width: fit-content;
+    max-width: 80%;
+    margin:5% auto;
+}
+
+.tableHead{
+    background-color: lightgray;
+}
+
+.addComment{
+    position: fixed;
+    right:5%;
+    bottom:10%;
+}
+

@@ -23,6 +23,7 @@ import {mainListItems} from '../listItems';
 import Videos from "./Videos";
 import Lives from "./Lives";
 import {is_login} from "../api/login";
+import Comment from "./Comment";
 
 const drawerWidth = 240;
 
@@ -182,6 +183,7 @@ export default function Dashboard() {
                     <div className={classes.appBarSpacer}/>
                     <div>
                         <Switch>
+                            <Route path="/dashboard/comments" component={Comment}/>
                             <Route path="/dashboard/videos" component={Videos}/>
                             <Route path="/dashboard/lives" component={Lives}/>
                             <Route path="/dashboard/" component={Videos}/>

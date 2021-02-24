@@ -23,6 +23,8 @@ import {makeStyles} from "@material-ui/core/styles";
 import {AlertSeverity} from "../../types/enums";
 import {LiveInfo, LiveInfo_Update} from "../../types/live";
 import {live_delete, live_retrieve, live_update} from "../../api/live";
+import livingImg from "../../img/living.jpg"
+import notlivingImg from "../../img/notliving.jpg"
 
 const useStyles = makeStyles({
     root: {},
@@ -156,7 +158,7 @@ export default function Live({
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image={info.living ? './img/living.jpg' : './img/notliving.jpg'}
+                    image={info.living ? livingImg : notlivingImg}
                 />
             </CardActionArea>
 

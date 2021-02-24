@@ -73,7 +73,6 @@ class CommentItemsList extends React.Component<Props, States>{
             let response = await getCommentList();
             const data = response.data;
             this.setState({commentInfo:data})
-
         }catch (err){
             console.error(err);
             this.setAlertSeverity(AlertSeverity.Error)
@@ -185,6 +184,7 @@ class CommentItemsList extends React.Component<Props, States>{
                         <TableHead>
                             <TableRow className="tableHead">
                                 <TableCell align="center">用户名</TableCell>
+                                <TableCell align="center">直播</TableCell>
                                 <TableCell align="center">评论内容</TableCell>
                                 <TableCell align="center">操作</TableCell>
                             </TableRow>
@@ -195,6 +195,7 @@ class CommentItemsList extends React.Component<Props, States>{
                                     <TableCell component="th" scope="row" align="center">
                                         匿名用户
                                     </TableCell>
+                                    <TableCell align="center">{_id}</TableCell>
                                     <TableCell align="center">{content}</TableCell>
                                     <TableCell align="center">
                                         <IconButton edge="end" aria-label="update" onClick={(ref)=>{this.handleUpdate(_id,content)}}>

@@ -29,12 +29,13 @@ export const mainListItems = (
 
             </ListItem>
         </Link>
-        <ListItem button>
-            <ListItemIcon>
-                <PeopleIcon/>
-            </ListItemIcon>
-            <ListItemText primary="评论管理"/>
-        </ListItem>
-
-    </div>
+        <Link to="/dashboard/comments">
+            <ListItem button>
+                <ListItemIcon>
+                    <PeopleIcon/>
+                </ListItemIcon>
+                <ListItemText primary="评论管理"/>
+            </ListItem>
+        </Link>
+</div>
 );

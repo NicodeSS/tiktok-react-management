@@ -3,7 +3,7 @@ import {LiveInfo_Create, LiveInfo_Update} from "../types/live"
 
 
 export const lives_list = (params={}) => {
-    return axios.get('/live/list',params)
+    return axios.get('/live/alllist',params)
 }
 
 export const live_create = (info:LiveInfo_Create) => {

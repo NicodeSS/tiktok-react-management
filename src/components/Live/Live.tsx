@@ -28,26 +28,33 @@ const useStyles = makeStyles({
     root: {},
     media: {
         height: "140px"
+    },
+    desc: {
+        wordBreak: "break-all",
     }
 })
 
 interface Props {
     index: number
     info: LiveInfo,
-    setSnackbar(status:boolean): void,
-    setAlertSeverity(status:AlertSeverity):void,
-    setAlertMessage(message:string):void,
-    fetchLives(page?:number):Promise<any>,
+
+    setSnackbar(status: boolean): void,
+
+    setAlertSeverity(status: AlertSeverity): void,
+
+    setAlertMessage(message: string): void,
+
+    fetchLives(page?: number): Promise<any>,
 }
 
 export default function Live({
-                                  index,
-                                  info,
-                                  setSnackbar,
-                                  setAlertSeverity,
-                                  setAlertMessage,
-                                  fetchLives
-                              }: Props) {
+                                 index,
+                                 info,
+                                 setSnackbar,
+                                 setAlertSeverity,
+                                 setAlertMessage,
+                                 fetchLives
+                             }: Props) {
     const classes = useStyles()
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const [deleteDialog, setDeleteDialog] = useState<boolean>(false)
@@ -149,7 +156,7 @@ export default function Live({
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image={'./img/logo192.png'}
+                    image={info.living ? './img/living.jpg' : './img/notliving.jpg'}
                 />
             </CardActionArea>
 
@@ -167,11 +174,14 @@ export default function Live({
                 subheader={info.updatedAt}
             />
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography className={classes.desc} variant="body2" color="textSecondary" component="p">
+                    <strong>{"推流地址: "}</strong>{"rtmp://182.61.20.79:1935/live/" + info.author_id}
+                </Typography>
+                <br/>
+                <Typography className={classes.desc} variant="body2" color="textSecondary" component="p">
                     {info.description.length > 15 ? info.description.substring(0, 15).concat("...") : info.description}
                 </Typography>
             </CardContent>
-
 
 
             <Menu
